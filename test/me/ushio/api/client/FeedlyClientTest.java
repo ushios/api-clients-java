@@ -27,7 +27,10 @@ public class FeedlyClientTest extends TestCase {
                 code
         );
         request.setClientId("sandbox");
-        request.setClientSecret("FUFNPXDNP2J0BF7RCEUZ");
+        request.setClientSecret("CM786L1D4P3M9VYUPOB8");
+        request.set("grant_type", "authorization_code");
+        request.set("state", "token");
+        request.set("redirect_uri", "http://localhost");
 
         FeedlyClient client = new FeedlySandboxClient(request);
     }
