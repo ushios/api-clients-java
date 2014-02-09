@@ -17,7 +17,7 @@ public class FeedlyClientTest extends TestCase {
     public void testGetDomain() throws Exception {
         NetHttpTransport transport = new NetHttpTransport();
         JsonFactory jsonFactory = new JacksonFactory();
-        String code = "";
+        String code = "AQAA6Gd7InUiOiI2MjIwMDEyIiwiaSI6IjdkMDI3YTY1LTQwZGUtNGFjMS05ZmRkLTY4YWIyNDBkNDBiYiIsInAiOjQsImEiOiJGZWVkbHkgc2FuZGJveCBjbGllbnQiLCJ0IjoxMzkxOTA1ODU5NzA4fQ";
         GenericUrl url = new GenericUrl("https://sandbox.feedly.com/v3/auth/token");
 
         FeedlyTokenRequest request = new FeedlyTokenRequest(
@@ -28,9 +28,7 @@ public class FeedlyClientTest extends TestCase {
         );
         request.setClientId("sandbox");
         request.setClientSecret("CM786L1D4P3M9VYUPOB8");
-        request.set("grant_type", "authorization_code");
-        request.set("state", "token");
-        request.set("redirect_uri", "http://localhost");
+        request.setRedirectUri("http://localhost");
 
         FeedlyClient client = new FeedlySandboxClient(request);
     }
