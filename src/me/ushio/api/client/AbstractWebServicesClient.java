@@ -1,6 +1,6 @@
 package me.ushio.api.client;
 
-import com.google.api.client.auth.oauth2.AuthorizationCodeTokenRequest;
+import com.google.api.client.auth.oauth2.TokenRequest;
 import com.google.api.client.auth.oauth2.TokenResponse;
 import com.google.api.client.http.GenericUrl;
 
@@ -17,6 +17,11 @@ abstract class AbstractWebServicesClient implements WebServicesClientInterface {
     protected String authenticatedToken;
 
     /**
+     * refresh token.
+     */
+    protected String refreshToken;
+
+    /**
      * Get Api host domain.
      * @return host name.
      */
@@ -26,11 +31,14 @@ abstract class AbstractWebServicesClient implements WebServicesClientInterface {
      * Constructor
      *
      */
-    public AbstractWebServicesClient(AuthorizationCodeTokenRequest request) throws IOException {
+    public AbstractWebServicesClient(TokenRequest request) throws IOException {
         TokenResponse response = request.execute();
+        this.setAuthenticatedToken(response.getAccessToken());
+        this.setRefreshToken(response.getRefreshToken());
     }
 
     /**
+
      * Get GenericUrl instance from api url.
      * @return api GenericUrl
      */
@@ -61,6 +69,14 @@ abstract class AbstractWebServicesClient implements WebServicesClientInterface {
     }
 
     /**
+     * Get authenticated token.
+     * @return
+     */
+    public String getAuthenticatedToken(){
+        return this.authenticatedToken;
+    }
+
+    /**
      * Set authenticated token.
      * @param token
      */
@@ -69,11 +85,18 @@ abstract class AbstractWebServicesClient implements WebServicesClientInterface {
     }
 
     /**
-     * Get authenticated token.
+     * Get refresh token.
      * @return
      */
-    protected String getAuthenticatedToken(){
-        return this.authenticatedToken;
+    public String getRefreshToken() {
+        return refreshToken;
     }
 
+    /**
+     * Set refresh token.
+     * @param refreshToken
+     */
+    protected void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
 }

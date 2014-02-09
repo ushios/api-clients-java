@@ -1,8 +1,6 @@
 package me.ushio.api.client;
 
-import com.google.api.client.auth.oauth2.AuthorizationCodeTokenRequest;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.JsonFactory;
+import me.ushio.api.client.auth.oauth2.FeedlyTokenRequest;
 
 import java.io.IOException;
 
@@ -17,7 +15,7 @@ public class FeedlySandboxClient extends FeedlyClient {
      *
      * @param request
      */
-    public FeedlySandboxClient(AuthorizationCodeTokenRequest request) throws IOException {
+    public FeedlySandboxClient(FeedlyTokenRequest request) throws IOException {
         super(request);
     }
 
