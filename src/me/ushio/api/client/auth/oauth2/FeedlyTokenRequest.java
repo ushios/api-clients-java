@@ -7,7 +7,7 @@ import com.google.api.client.json.JsonFactory;
 /**
  * Created by shugo on 2014/02/08.
  */
-public class FeedlyTokenRequest extends AuthorizationCodeTokenRequest {
+public class FeedlyTokenRequest extends AbstractWebservicesAuthorizationCodeTokenRequest {
 
     public FeedlyTokenRequest(HttpTransport transport, JsonFactory jsonFactory, GenericUrl tokenServerUrl, String code) {
         super(transport, jsonFactory, tokenServerUrl, code);

@@ -7,9 +7,6 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import junit.framework.TestCase;
 import me.ushio.api.client.auth.oauth2.FeedlyTokenRequest;
 
-import java.io.*;
-import java.nio.charset.Charset;
-
 /**
  * Created by shugo on 2014/02/08.
  */
